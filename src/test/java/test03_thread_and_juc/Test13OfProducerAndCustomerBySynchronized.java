@@ -6,13 +6,16 @@ import java.util.Random;
 
 /**
  * 生产者消费者测试
+ * 使用 synchronized + wait_notify 机制实现
  *
  */
-public class Test13OfProducerAndCustomer {
+public class Test13OfProducerAndCustomerBySynchronized {
 	
 	public static void main(String[] args) {
 		Shop shop = new Shop();
 		new Thread(new Producer(shop )).start();
+		new Thread(new Producer(shop )).start();
+		new Thread(new Consumer(shop)).start();
 		new Thread(new Consumer(shop)).start();
 	}
 
@@ -36,12 +39,12 @@ public class Test13OfProducerAndCustomer {
 	 * 
 	 */
 	static class Shop {
-		private static final Integer MAX_COUNT = 3;
-		private Deque<Egg> deque = new ArrayDeque<>(4);
+		private static final Integer MAX_COUNT = 1;
+		private Deque<Egg> deque = new ArrayDeque<>(1);
 		
 		// 进货+1
 		public synchronized void stock(Egg egg) {
-			while (deque.size() >= MAX_COUNT) {
+			while (deque.size() >= MAX_COUNT) { //使用 while 而不是 if 进行判断，可以避免虚假唤醒的问题
 				System.out.println("进货已满，queue=" + deque);
 				try { this.wait(); } catch (Exception e) {}
 			}
@@ -52,7 +55,7 @@ public class Test13OfProducerAndCustomer {
 		
 		// 出货-1
 		public synchronized void sell() {
-			while (deque.size() <= 0) {
+			while (deque.size() <= 0) { //使用 while 而不是 if 进行判断，可以避免虚假唤醒的问题
 				System.out.println("出货已空，queue=" + deque);
 				try { this.wait(); } catch (Exception e) {}
 			}

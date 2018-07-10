@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * 测试 自定义线程池
  *
  */
-public class Test16CustomThreadPool {
+public class Test17CustomThreadPool {
 	
 	/**
 	 * 连接池接口

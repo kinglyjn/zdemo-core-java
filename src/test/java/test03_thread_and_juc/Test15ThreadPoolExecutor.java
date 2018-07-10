@@ -7,7 +7,7 @@ import org.junit.Test;
  * 中断线程的更好的方式还是设置中断标识
  *
  */
-public class Test14ThreadPoolExecutor {
+public class Test15ThreadPoolExecutor {
 	
 	static class TaskWithoutResult implements Runnable {
 		@Override

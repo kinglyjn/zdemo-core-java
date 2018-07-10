@@ -42,9 +42,10 @@ public class Test10OfCallable {
 		Thread t = new Thread(futureTask);
 		t.start();
 		
-		// 获取计算结果
+		// 获取计算结果，值的获取类似于闭锁（CountDownLatch 1->0）的机制
 		Integer result = futureTask.get();
 		System.out.println("result=" + result);
 		Thread.sleep(10000);
 	}
+	
 }
