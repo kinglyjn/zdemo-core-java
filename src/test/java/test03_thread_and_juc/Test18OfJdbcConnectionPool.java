@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 简单的数据库连接池示例
  *
  */
-public class Test16OfJdbcConnectionPool {
+public class Test18OfJdbcConnectionPool {
 	
 	/**
 	 * 连接池生成器（模拟）

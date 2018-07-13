@@ -10,7 +10,7 @@ import org.junit.Test;
  * 测试 ThreadPoolExecutor线程池
  *
  */
-public class Test18ThreadPoolExecutor {
+public class Test20ThreadPoolExecutor {
 
 	/**
 	 * 验证shutdown和shutdownNow的区别
