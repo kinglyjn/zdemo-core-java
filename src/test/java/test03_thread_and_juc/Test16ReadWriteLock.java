@@ -10,8 +10,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * 写锁 - 如果没有线程正在读或写，那么一个线程可以访问写锁。
  * 
  * 读写锁维护一对锁对象，即读锁和写锁
- * 1.写写/读写 需要互斥
- * 2.读读不需要互斥
+ * 读-读 能共存，读-写、写-写不能共存
  * 
  */
 public class Test16ReadWriteLock {
