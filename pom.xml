@@ -4,7 +4,25 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.keyllo.demo</groupId>
 	<artifactId>zdemo-core-java</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-RELEASE</version>
+	
+	
+	<!-- 发布管理 -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>keyllo-nexus</id>
+			<url>http://keyllo.com:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>keyllo-nexus</id>
+			<url>http://keyllo.com:8081/repository/maven-releases/</url>
+		</repository>
+		<site>
+			<id>keyllo-nexus</id>
+			<url>dav:http://keyllo.com:8081/repository/maven-snapshots/</url>
+		</site>
+	</distributionManagement>
+	
 	
 	<!-- 参数管理 -->
 	<properties>
@@ -54,6 +72,7 @@
 	<build>
 		<finalName>zdemo-core-java</finalName>
 		<plugins>
+			<!-- 编译插件 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -63,6 +82,21 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			<!-- 源码插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 资源插件 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
