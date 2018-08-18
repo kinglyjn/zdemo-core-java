@@ -146,7 +146,7 @@ public class Test09OfCountDownLatch {
 	
 	
 	/**
-	 * ConcurrentLinkedDeque [extends Queue implements Deque]
+	 * ConcurrentLinkedDeque [extends Queue implements Deque] & ConcurrentLinkedQueue [extends AbstractQueue implements Queue]
 	 * 1. 它是基于链表的无界线程安全队列
 	 * 2. 线程安全性通过CAS无锁机制实现，性能通常由于 BlockingQueue。
 	 * 3. 该队列不允许存放和消费空null元素。
@@ -191,6 +191,9 @@ public class Test09OfCountDownLatch {
 		System.out.println(deque.poll()); //a
 		System.out.println(deque.poll()); //b
 		System.out.println(deque.poll()); //null
-		System.out.println(deque.poll(2, TimeUnit.SECONDS)); //null
+		System.out.println(deque.poll()); //null
+		System.out.println(deque.poll(10, TimeUnit.SECONDS)); //null
+		deque.offer("d");
+		System.out.println(deque.poll()); //d
 	}
 }
