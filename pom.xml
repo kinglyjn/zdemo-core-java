@@ -28,6 +28,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<springframework.version>4.3.8.RELEASE</springframework.version>
+		<alibaba-fastjson.version>1.2.47</alibaba-fastjson.version>
 		<junit.version>4.12</junit.version>
 		<slf4j.version>1.7.24</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
@@ -48,6 +49,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${springframework.version}</version>
+		</dependency>
+		
+		<!-- json -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>${alibaba-fastjson.version}</version>
 		</dependency>
 
 		<!-- log -->
