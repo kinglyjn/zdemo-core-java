@@ -77,6 +77,9 @@ search everywhere:
 ``` bash
 select all occurences:
 	command+control+G
+	
+column selection mode:
+    shift+command+8
 ```
 
 ### 代码提示
