@@ -33,6 +33,20 @@ public class Test02_Method_Constructor_Ref {
 	 * 对象::实例方法名
 	 * 
 	 */
+	static class Student1 {
+		private Integer id;
+		private String name;
+		public Student1(Integer id, String name) {
+			this.id = id;
+			this.name = name;
+		}
+		public String getName() {
+			return name;
+		}
+		public Integer getId() {
+			return id;
+		}
+	}
 	@Test
 	public void test01() {
 		////
@@ -44,21 +58,7 @@ public class Test02_Method_Constructor_Ref {
 		
 		
 		////
-		class Student {
-			private Integer id;
-			private String name;
-			public Student(Integer id, String name) {
-				this.id = id;
-				this.name = name;
-			}
-			public String getName() {
-				return name;
-			}
-			public Integer getId() {
-				return id;
-			}
-		}
-		Student student = new Student(1, "张三");
+		Student1 student = new Student1(1, "张三");
 		Supplier<String> supplier1 = () -> student.getName();
 		System.out.println("student name: " + supplier1.get());
 		
@@ -104,26 +104,25 @@ public class Test02_Method_Constructor_Ref {
 	 * Classname::new
 	 * 
 	 */
+	static class Student2 {
+		Integer id;
+		public Student2() {}
+		public Student2(Integer id) {
+			this.id = id;
+		}
+	}
 	@Test
 	public void test04() {
-		class Student {
-			Integer id;
-			public Student() {}
-			public Student(Integer id) {
-				this.id = id;
-			}
-		}
-		
 		////
-		Supplier<Student> supplier1 = () -> new Student();
+		Supplier<Student2> supplier1 = () -> new Student2();
 		System.out.println(supplier1.get());
-		Supplier<Student> supplier2 = Student::new;
+		Supplier<Student2> supplier2 = Student2::new;
 		System.out.println(supplier2.get());
 		
 		////
-		Function<Integer, Student> function1 = (id) -> new Student(id);
+		Function<Integer, Student2> function1 = (id) -> new Student2(id);
 		System.out.println(function1.apply(1).id);
-		Function<Integer, Student> function2 = Student::new;
+		Function<Integer, Student2> function2 = Student2::new;
 		System.out.println(function2.apply(2).getClass());
 	}
 	
